@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -95,85 +96,14 @@
                     </div>
                     <div class="text-ani">
                         <div class="nav tab-menu1" role="tablist">
-                            <button class="th-btn style-border btn-sm active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">Breakfast</button> 
-                            <button class="th-btn style-border btn-sm" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">Lunch</button> 
-                            <button class="th-btn style-border btn-sm" id="nav-three-tab" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">Dinner</button>
+                            <button class="th-btn style-border btn-sm active category-btn" data-category="Breakfast" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">Breakfast</button> 
+                            <button class="th-btn style-border btn-sm category-btn" data-category="Lunch" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">Lunch</button> 
+                            <button class="th-btn style-border btn-sm category-btn" data-category="Dinner" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">Dinner</button>
                         </div>
                     </div>
-                    <div class="row gy-40 justify-content-center">
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="th-product product-grid">
-                                <div class="product-img transparent-img"><img src="assets/img/product/product_1_1.png"
-                                        alt="Product Image"> <span class="product-tag">Veg</span>
-                                </div>
-                                <div class="product-content mt-n5">
-                                    <button class="th-btn wc-forward">Add to Cart</button>
-                                    <h3 class="product-title"><a href="#">Egg and Cocumber</a></h3><span
-                                        class="price">₹240.00<del>₹320.00</del></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>>
+                    <div class="row gy-40 justify-content-center" id="menu-items">
+                       
+                    </div>
                 </div>
             </section>
             <div class="th-cart-wrapper space-extra-bottom">
@@ -293,6 +223,53 @@
     <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
     <script src="assets/js/app.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        function loadMenu(category) {
+            $.ajax({
+                url: 'fetch_menu.php',
+                type: 'POST',
+                data: { category: category },
+                dataType: 'json',
+                success: function (response) {
+                    let html = '';
+                    if (response.length > 0) {
+                        response.forEach(item => {
+                            html += `
+                                <div class="col-xl-3 col-lg-4 col-sm-6">
+                                    <div class="th-product product-grid">
+                                        <div class="product-img transparent-img">
+                                            <img src="food_admin/zenvic/${item.food_image}" alt="Product Image">
+                                            <span class="product-tag">${item.food_type}</span>
+                                        </div>
+                                        <div class="product-content mt-n5">
+                                            <button class="th-btn wc-forward">Add to Cart</button>
+                                            <h3 class="product-title"><a href="#">${item.food_name}</a></h3>
+                                            <span class="price">₹${item.price} ${item.price ? `<del>₹${(item.price * 1.15).toFixed(2)}</del>` : ''}</span>
+                                        </div>
+                                    </div>
+                                </div>`;
+                        });
+                    } else {
+                        html = `<p class="text-center">No items available for this category.</p>`;
+                    }
+                    $("#menu-items").html(html);
+                }
+            });
+        }
+
+        $(".category-btn").click(function () {
+            $(".category-btn").removeClass("active");
+            $(this).addClass("active");
+            let category = $(this).data("category");
+            loadMenu(category);
+        });
+
+        // Load default category (Breakfast) on page load
+        loadMenu('Breakfast');
+    });
+    </script>
 </body>
 
 </html>
