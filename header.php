@@ -18,7 +18,7 @@
                         <div class="header-links">
                             <div class="shape1"></div>
                             <ul>
-                                <li><i class="fas fa-clock"></i> <b>Monday to Friday:</b> 9:00am - 10:00pm</li>
+                                <li><i class="fas fa-clock"></i> <b>Monday to Sunday:</b> 8:00am - 10:00pm</li>
                             </ul>
                         </div>
                     </div>

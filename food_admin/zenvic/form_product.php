@@ -44,6 +44,9 @@
                                 <option value="Breakfast">Breakfast</option>
                                 <option value="Lunch">Lunch</option>
                                 <option value="Dinner">Dinner</option>
+                                <option value="Cool Drinks">Cool Drinks</option>
+                                <option value="Desserts">Desserts</option>
+                                <option value="Combo">Combo</option>
                             </select>
                             <div class="invalid-feedback">Please select a category.</div>
                         </div>
@@ -61,7 +64,7 @@
 
                     <!-- Food Image Upload -->
                     <div class="col-md-12">
-                        <label for="food_image" class="form-label">Food Image <span class="text-danger">*</span></label>
+                        <label for="food_image" class="form-label">Food Image <span class="text-danger">*</span>(Image size must be 230 × 230)</label>
                         <input type="file" class="form-control" name="food_image" id="food_image" accept="image/*" required>
                         <div class="invalid-feedback">Please upload a food image.</div>
                     </div>
@@ -121,6 +124,9 @@
                             <option value="Breakfast">Breakfast</option>
                             <option value="Lunch">Lunch</option>
                             <option value="Dinner">Dinner</option>
+                            <option value="Cool Drinks">Cool Drinks</option>
+                            <option value="Desserts">Desserts</option>
+                            <option value="Combo">Combo</option>
                         </select>
                         <div class="invalid-feedback">Please select a category.</div>
                     </div>
@@ -142,7 +148,7 @@
 
                     <!-- Food Image Upload -->
                     <div class="col-md-12">
-                        <label for="edit_food_image" class="form-label">Food Image </label>
+                        <label for="edit_food_image" class="form-label">Food Image (Image size must be 230 × 230)</label>
                         <input type="file" class="form-control" name="food_image" id="edit_food_image" accept="image/*">
                         <div class="invalid-feedback">Please upload a food image.</div>
                     </div>

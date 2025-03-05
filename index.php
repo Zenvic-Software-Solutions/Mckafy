@@ -23,7 +23,7 @@
                     <p class="woocommerce-mini-cart__total total text-end"><strong>Subtotal:</strong> <span
                             class="woocommerce-Price-amount amount"><span
                                 class="woocommerce-Price-currencySymbol">₹</span><span id="sideSubTotal"></span></span></p>
-                    <p class="woocommerce-mini-cart__buttons buttons text-end"><a href="#" class="th-btn wc-forward">View
+                    <p class="woocommerce-mini-cart__buttons buttons text-end"><a href="index.php                                                                   " class="th-btn wc-forward">View
                             cart</a></p>
                 </div>
             </div>
@@ -44,23 +44,70 @@
     <?php include "header.php"?>
     <div id="smooth-wrapper">
         <div id="smooth-content">
-            <div class="th-hero-wrapper hero-2" id="hero">
-                <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
-                <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
-                <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
-                <div class="hero-inner">
-                    <div class="container th-container">
-                        <div class="hero-style2">
-                            <div class="title-ani"><span class="hero-subtitle text-center">Its Quick & Amusing!</span>
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="th-hero-wrapper hero-2">
+                            <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
+                            <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
+                            <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
+                            <div class="hero-inner">
+                                <div class="container th-container">
+                                    <div class="hero-style2">
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Its Quick & Amusing!</span></div>
+                                        <h1 class="hero-title2">Fast &</h1>
+                                        <h2 class="hero-title3">Fresh Flavorful</h2>
+                                        <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                                    </div>
+                                </div>
                             </div>
-                            <h1 class="hero-title2">Fast Fresh</h1>
-                            <h2 class="hero-title3">Flavorful</h2>
-                            <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                            <div class="hero-img"><img src="assets/img/hero/hero_2_1.png" alt="Hero Image"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="th-hero-wrapper hero-2">
+                            <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
+                            <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
+                            <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
+                            <div class="hero-inner">
+                                <div class="container th-container">
+                                    <div class="hero-style2">
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Delicious & Tasty!</span></div>
+                                        <h1 class="hero-title2">Hot Spicy</h1>
+                                        <h2 class="hero-title3">Crunchy Bites</h2>
+                                        <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-img"><img src="assets/img/hero/hero_3_1.png" alt="Hero Image"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="th-hero-wrapper hero-2">
+                            <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
+                            <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
+                            <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
+                            <div class="hero-inner">
+                                <div class="container th-container">
+                                    <div class="hero-style2">
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Sizzling & Juicy!</span></div>
+                                        <h1 class="hero-title2">Satisfy </h1>
+                                        <h2 class="hero-title3">Your Hunger</h2>
+                                        <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-img"><img src="assets/img/hero/hero_3_2.png" alt="Hero Image"></div>
                         </div>
                     </div>
                 </div>
-                <div class="hero-img"><img src="assets/img/hero/hero_2_1.png" alt="Hero Image"></div>
             </div>
+
             <section class="space">
                 <div class="container">
                     <div class="title-area text-center"><span class="sub-title2">Our Menu</span>
@@ -71,6 +118,9 @@
                             <button class="th-btn style-border btn-sm active category-btn" data-category="Breakfast" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">Breakfast</button> 
                             <button class="th-btn style-border btn-sm category-btn" data-category="Lunch" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">Lunch</button> 
                             <button class="th-btn style-border btn-sm category-btn" data-category="Dinner" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">Dinner</button>
+                            <button class="th-btn style-border btn-sm category-btn" data-category="Cool Drinks" data-bs-toggle="tab" data-bs-target="#nav-one" type="button" role="tab" aria-controls="nav-one" aria-selected="true">Cool Drinks</button> 
+                            <button class="th-btn style-border btn-sm category-btn" data-category="Desserts" data-bs-toggle="tab" data-bs-target="#nav-two" type="button" role="tab" aria-controls="nav-two" aria-selected="false">Desserts</button> 
+                            <button class="th-btn style-border btn-sm category-btn" data-category="Combo" data-bs-toggle="tab" data-bs-target="#nav-three" type="button" role="tab" aria-controls="nav-three" aria-selected="false">Combo</button>
                         </div>
                     </div>
                     <div class="row gy-40 justify-content-center" id="menu-items">

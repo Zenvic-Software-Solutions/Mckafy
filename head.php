@@ -1,9 +1,9 @@
 <head>
     <meta charset="utf-8">
-    <title>Marzcafe - Fast Food & Restaurant</title>
+    <title>MERZCAFE FOODS INDIA PRIVATE LIMITED</title>
     <meta name="author" content="Marzcafe">
-    <meta name="description" content="Marzcafe - Fast Food & Restaurant">
-    <meta name="keywords" content="Marzcafe - Fast Food & Restaurant">
+    <meta name="description" content="Merzcafe - Fast Food & Restaurant">
+    <meta name="keywords" content="Merzcafe - Fast Food & Restaurant">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">

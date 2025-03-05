@@ -65,9 +65,17 @@
                 <div class="copyright-wrap">
                     <div class="container">
                         <div class="row gx-1 gy-2 align-items-center">
-                            <div class="col-md-12 text-center">
+                            <div class="col-md-7">
                                 <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2025 <a
                                         href="https://zenvicsoft.com" target="_blank">Zenvic Software Solutions Pvt Ltd</a>. All Rights Reserved.</p>
+                            </div>
+                            <div class="col-md-5 text-center text-md-end">
+                                <div class="footer-links">
+                                    <ul>
+                                        <li><a href="#">Terms & Condition</a></li>
+                                        <li><a href="#">Refund Policy</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
