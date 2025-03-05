@@ -1,9 +1,9 @@
 <?php
-require '../../db/dbConnection.php'; 
-require '../../vendor/autoload.php'; 
+require 'food_admin/db/dbConnection.php'; 
+require 'vendor/autoload.php'; 
 use Razorpay\Api\Api;
 
-$api = new Api("YOUR_RAZORPAY_KEY", "YOUR_RAZORPAY_SECRET");
+$api = new Api("rzp_test_g0Q9C1u01IFEEX", "QpKr2VMFDbFPbVZhhLtFhyqQ");
 
 $data = json_decode(file_get_contents("php://input"), true);
 $razorpay_payment_id = $data['razorpay_payment_id'];

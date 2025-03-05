@@ -3,7 +3,7 @@ require 'food_admin/db/dbConnection.php';
 require 'vendor/autoload.php'; 
 use Razorpay\Api\Api;
 
-$api = new Api("YOUR_RAZORPAY_KEY", "YOUR_RAZORPAY_SECRET");
+$api = new Api("rzp_test_g0Q9C1u01IFEEX", "QpKr2VMFDbFPbVZhhLtFhyqQ");
 
 $data = json_decode(file_get_contents("php://input"), true);
 $user_id = $data['user_id'];
@@ -28,8 +28,21 @@ mysqli_query($conn, "INSERT INTO food_orders (order_id, total_amount) VALUES ('$
 
 // Insert Ordered Items
 foreach ($cartItems as $item) {
-    mysqli_query($conn, "INSERT INTO food_order_items (order_id, food_id, quantity, price, subtotal) 
-    VALUES ('$order_id', '{$item['id']}', '{$item['quantity']}', '{$item['price']}', '{$item['quantity'] * $item['price']}')");
+    if (!isset($item['id'], $item['quantity'], $item['price'])) {
+        die(json_encode(["error" => "Missing fields in cart data"]));
+    }
+
+    $food_id = mysqli_real_escape_string($conn, $item['id']);
+    $quantity = (int) $item['quantity'];
+    $price = (float) $item['price'];
+    $subtotal = $quantity * $price;
+
+    $query = "INSERT INTO food_order_items (order_id, food_id, quantity, price, subtotal) 
+              VALUES ('$order_id', '$food_id', '$quantity', '$price', '$subtotal')";
+    
+    if (!mysqli_query($conn, $query)) {
+        die(json_encode(["error" => "SQL Error: " . mysqli_error($conn)]));
+    }
 }
 
 echo json_encode(["order_id" => $order_id, "amount" => $totalAmount * 100, "currency" => "INR"]);
