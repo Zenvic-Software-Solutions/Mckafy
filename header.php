@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-auto">
                             <div class="header-button">
-                                 <button type="button" class="simple-icon sideMenuToggler"> <i class="fal fa-cart-shopping"></i></button> <button type="button" class="th-menu-toggle d-block d-lg-none"><i class="far fa-bars"></i></button></div>
+                                 <button type="button" class="simple-icon sideMenuToggler"> <i class="fal fa-cart-shopping"></i><span class="badge" id="item_count"></span></button> <button type="button" class="th-menu-toggle d-block d-lg-none"><i class="far fa-bars"></i></button></div>
                         </div>
                     </div>
                 </div>
