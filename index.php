@@ -17,42 +17,14 @@
             <div class="widget woocommerce widget_shopping_cart">
                 <h3 class="widget_title">Shopping cart</h3>
                 <div class="widget_shopping_cart_content">
-                    <ul class="woocommerce-mini-cart cart_list product_list_widget">
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_1.png" alt="Cart Image">Egg and Cocumber</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>940.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_2.png" alt="Cart Image">Tofu Red Chili</a> <span
-                                class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>899.00</span></span></li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_3.png" alt="Cart Image">Raw Salmon Salad</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>756.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_4.png" alt="Cart Image">Salmon Beef Stack</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>723.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_5.png" alt="Cart Image">Paper Letter Printing</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>1080.00</span></span>
-                        </li>
+                    <ul class="woocommerce-mini-cart cart_list product_list_widget" id="sideCartMenu">
+
                     </ul>
-                    <p class="woocommerce-mini-cart__total total"><strong>Subtotal:</strong> <span
+                    <p class="woocommerce-mini-cart__total total text-end"><strong>Subtotal:</strong> <span
                             class="woocommerce-Price-amount amount"><span
-                                class="woocommerce-Price-currencySymbol">$</span>4398.00</span></p>
-                    <p class="woocommerce-mini-cart__buttons buttons"><a href="#" class="th-btn wc-forward">View
-                            cart</a> <a href="#" class="th-btn checkout wc-forward">Checkout</a></p>
+                                class="woocommerce-Price-currencySymbol">₹</span><span id="sideSubTotal"></span></span></p>
+                    <p class="woocommerce-mini-cart__buttons buttons text-end"><a href="#" class="th-btn wc-forward">View
+                            cart</a></p>
                 </div>
             </div>
         </div>
@@ -217,6 +189,8 @@
         loadMenu('Breakfast');
     });
 
+    
+
     $(document).ready(function () {
         $(document).on("click", ".add-to-cart", function () { 
             let productName = $(this).data("name");
@@ -312,9 +286,7 @@
                 
                 if (rowTotal > 0) {
                     itemCount++;
-                    $("#item_count").text(itemCount); // Count only items with a price
                 }
-
                 subtotal += rowTotal;
             });
             // Calculate GST (12%)
@@ -322,9 +294,36 @@
             // Calculate Order Total
             let orderTotal = subtotal + gstAmount;
             // Update the values in the cart summary using IDs
-            $("#cart-subtotal").text(subtotal);
-            $("#cart-gst").text(gstAmount);
-            $("#order-total").text(orderTotal);
+            $("#cart-subtotal").text(subtotal.toFixed(2));
+            $("#sideSubTotal").text(subtotal.toFixed(2));
+            $("#cart-gst").text(gstAmount.toFixed(2));
+            $("#order-total").text(orderTotal.toFixed(2));
+
+            $("#item_count").text(itemCount);
+            updateSideCart();
+        }
+        function updateSideCart() {
+            let sideCartMenu = $("#sideCartMenu");
+            sideCartMenu.empty(); // Clear previous content
+
+            $(".cart_item").each(function () {
+                let productName = $(this).data("name");
+                let productImage = $(this).find(".cart-productimage img").attr("src");
+                let quantity = $(this).find(".qty-input").val();
+                let price = parseFloat($(this).find(".amount bdi").first().text().replace("₹", ""));
+                let total = price * quantity;
+
+                let sideCartItem = `
+                    <li class="woocommerce-mini-cart-item mini_cart_item" data-name="${productName}">
+                        <a><img src="${productImage}" alt="Cart Image">${productName}</a>
+                        <span class="quantity">${quantity} × <span class="woocommerce-Price-amount amount">
+                            <span class="woocommerce-Price-currencySymbol">₹</span>${price.toFixed(2)}
+                        </span></span>
+                        <span class="text-end"><b>Total: ₹${total.toFixed(2)}</b></span>
+                    </li>`;
+
+                sideCartMenu.append(sideCartItem);
+            });
         }
     });
 
