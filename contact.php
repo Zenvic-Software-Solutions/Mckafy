@@ -11,51 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="sidemenu-wrapper sidemenu-cart">
-        <div class="sidemenu-content"><button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
-            <div class="widget woocommerce widget_shopping_cart">
-                <h3 class="widget_title">Shopping cart</h3>
-                <div class="widget_shopping_cart_content">
-                    <ul class="woocommerce-mini-cart cart_list product_list_widget">
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_1.png" alt="Cart Image">Egg and Cocumber</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>940.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_2.png" alt="Cart Image">Tofu Red Chili</a> <span
-                                class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>899.00</span></span></li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_3.png" alt="Cart Image">Raw Salmon Salad</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>756.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_4.png" alt="Cart Image">Salmon Beef Stack</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>723.00</span></span>
-                        </li>
-                        <li class="woocommerce-mini-cart-item mini_cart_item"><a href="#"
-                                class="remove remove_from_cart_button"><i class="far fa-times"></i></a> <a href="#"><img
-                                    src="assets/img/product/menu_thumb_5.png" alt="Cart Image">Paper Letter Printing</a>
-                            <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><span
-                                        class="woocommerce-Price-currencySymbol">$</span>1080.00</span></span>
-                        </li>
-                    </ul>
-                    <p class="woocommerce-mini-cart__total total"><strong>Subtotal:</strong> <span
-                            class="woocommerce-Price-amount amount"><span
-                                class="woocommerce-Price-currencySymbol">$</span>4398.00</span></p>
-                    <p class="woocommerce-mini-cart__buttons buttons"><a href="#" class="th-btn wc-forward">View
-                            cart</a> <a href="#" class="th-btn checkout wc-forward">Checkout</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="th-menu-wrapper">
         <div class="th-menu-area text-center"><button class="th-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo"><a href="index.php"><img src="assets/img/logo.svg"

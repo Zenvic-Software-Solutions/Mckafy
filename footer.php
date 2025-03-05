@@ -72,8 +72,8 @@
                             <div class="col-md-5 text-center text-md-end">
                                 <div class="footer-links">
                                     <ul>
-                                        <li><a href="#">Terms & Condition</a></li>
-                                        <li><a href="#">Refund Policy</a></li>
+                                        <li><a href="terms.php">Terms & Condition</a></li>
+                                        <li><a href="refund.php">Refund Policy</a></li>
                                     </ul>
                                 </div>
                             </div>
