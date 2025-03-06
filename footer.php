@@ -21,14 +21,14 @@
                                             <h4 class="box-title">Phone Number</h4>
                                             <div class="box-content">
                                                 <div class="box-icon"><i class="fas fa-phone"></i></div>
-                                                <p class="box-text"><a href="tel:+91 98745 63210">+91 98745 63210</a></p>
+                                                <p class="box-text"><a href="tel:+91 98405 86859">+91 98405 86859</a></p>
                                             </div>
                                         </div>
                                         <div class="info-box">
                                             <h4 class="box-title">Email address</h4>
                                             <div class="box-content">
                                                 <div class="box-icon"><i class="fas fa-envelope"></i></div>
-                                                <p class="box-text"><a href="mailto:info@marzcafe.com">info@marzcafe.com</a>
+                                                <p class="box-text"><a href="mailto:merzcafe.foods@gmail.com">merzcafe.foods@gmail.com</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -40,9 +40,9 @@
                                     <h3 class="widget_title">Quick Links</h3>
                                     <div class="menu-all-pages-container">
                                         <ul class="menu">
-                                            <li><a href="#">Chef</a></li>
-                                            <li><a href="#">Testimonials</a></li>
-                                            <li><a href="#">Company History</a></li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
+                                            <li><a href="index.php">Menus</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -52,9 +52,11 @@
                                     <h3 class="widget_title">Food Menu</h3>
                                     <div class="menu-all-pages-container">
                                         <ul class="menu">
-                                            <li><a href="#">Breakfast</a></li>
-                                            <li><a href="#">Lunch</a></li>
-                                            <li><a href="#">Dinner</a></li>
+                                        <li><a href="#" class="menu-link" data-category="Breakfast">Breakfast</a></li>
+                                        <li><a href="#" class="menu-link" data-category="Lunch">Lunch</a></li>
+                                        <li><a href="#" class="menu-link" data-category="Dinner">Dinner</a></li>
+                                        <li><a href="#" class="menu-link" data-category="Desserts">Desserts</a></li>
+                                        <li><a href="#" class="menu-link" data-category="Combo">Combo</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -81,3 +83,23 @@
                     </div>
                 </div>
             </footer>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                 $(".menu-link").on("click", function (e) {
+                    e.preventDefault(); // Prevent default link behavior
+
+                    let category = $(this).data("category");
+
+                    // Scroll to the menu section
+                    $("html, body").animate(
+                        {
+                            scrollTop: $("#menu-section").offset().top - 100
+                        },
+                        200
+                    );
+
+                    // Trigger category button click
+                    $(".category-btn[data-category='" + category + "']").click();
+                });
+            </script>
+            

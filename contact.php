@@ -46,9 +46,7 @@
                                 <div class="title-area mb-32">
                                     <h2 class="sec-title title-ani2">Contact Information</h2>
                                     <div class="text-ani">
-                                        <p class="sec-text">Immerse yourself in a sophisticated and inviting ambiance.
-                                            The carefully curated decor sets the stage for intimate dinners,
-                                            celebrations.</p>
+                                        <p class="sec-text">Have a question, feedback, or just want to say hello? Our team is here to help! Reach out to us using the details below, and we'll get back to you as soon as possible.</p>
                                     </div>
                                 </div>
                                 <div class="contact-feature-wrap">
@@ -64,23 +62,23 @@
                                         <div class="media-body">
                                             <h3 class="box-title text-ani">Email Address</h3>
                                             <p class="box-text text-ani"><a
-                                                    href="mailto:info@marzcafe.com">info@marzcafe.com</a></p>
+                                                    href="mailto:merzcafe.foods@gmail.com">merzcafe.foods@gmail.com</a></p>
                                         </div>
                                     </div>
                                     <div class="contact-feature">
                                         <div class="box-icon"><i class="fal fa-phone"></i></div>
                                         <div class="media-body">
                                             <h3 class="box-title text-ani">Contact Number</h3>
-                                            <p class="box-text text-ani"><a href="tel:+91 98745 63210">+91 98745 63210</a>
+                                            <p class="box-text text-ani"><a href="tel:+91 98405 86859">+91 98405 86859</a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="th-social text-ani"><a href="https://www.facebook.com/"><i
-                                            class="fab fa-facebook-f"></i></a> <a href="https://www.twitter.com/"><i
-                                            class="fab fa-twitter"></i></a> <a href="https://www.instagram.com/"><i
-                                            class="fab fa-instagram"></i></a> <a href="https://www.linkedin.com/"><i
-                                            class="fab fa-linkedin-in"></i></a> <a href="https://www.whatsapp.com/"><i
+                                <div class="th-social text-ani"><a href="#"><i
+                                            class="fab fa-facebook-f"></i></a> <a href="#"><i
+                                            class="fab fa-twitter"></i></a> <a href="#"><i
+                                            class="fab fa-instagram"></i></a> <a href="#"><i
+                                            class="fab fa-linkedin-in"></i></a> <a href="#"><i
                                             class="fab fa-whatsapp"></i></a></div>
                             </div>
                         </div>

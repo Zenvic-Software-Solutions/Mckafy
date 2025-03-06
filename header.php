@@ -8,8 +8,8 @@
                                 <li class="d-none d-xxl-inline-block"><i class="fas fa-location-dot"></i> <a
                                         href="https://www.google.com/maps/">9402 Main St, Plymouth, CA 95669, United
                                         States</a></li>
-                                <li><i class="fas fa-phone"></i> <a href="tel:+91 98745 63210">+91 98745 63210</a></li>
-                                <li><i class="fas fa-envelope"></i> <a href="mailto:info@marzcafe.com">info@marzcafe.com</a>
+                                <li><i class="fas fa-phone"></i> <a href="tel:+91 98405 86859">+91 98405 86859</a></li>
+                                <li><i class="fas fa-envelope"></i> <a href="mailto:merzcafe.foods@gmail.com">merzcafe.foods@gmail.com</a>
                                 </li>
                             </ul>
                         </div>

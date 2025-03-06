@@ -55,9 +55,9 @@
                             <div class="hero-inner">
                                 <div class="container th-container">
                                     <div class="hero-style2">
-                                        <div class="title-ani"><span class="hero-subtitle text-center">Its Quick & Amusing!</span></div>
-                                        <h1 class="hero-title2">Fast &</h1>
-                                        <h2 class="hero-title3">Fresh Flavorful</h2>
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Brownies That Melt in Your Mouth!</span></div>
+                                        <h1 class="hero-title2">Indulge</h1>
+                                        <h2 class="hero-title3"> In Fudgy Bliss</h2>
                                         <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
                                     </div>
                                 </div>
@@ -75,9 +75,9 @@
                             <div class="hero-inner">
                                 <div class="container th-container">
                                     <div class="hero-style2">
-                                        <div class="title-ani"><span class="hero-subtitle text-center">Delicious & Tasty!</span></div>
-                                        <h1 class="hero-title2">Hot Spicy</h1>
-                                        <h2 class="hero-title3">Crunchy Bites</h2>
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Biryani Lovers</span></div>
+                                        <h1 class="hero-title2">This One</h1>
+                                        <h2 class="hero-title3"> For You!</h2>
                                         <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
                                     </div>
                                 </div>
@@ -95,9 +95,9 @@
                             <div class="hero-inner">
                                 <div class="container th-container">
                                     <div class="hero-style2">
-                                        <div class="title-ani"><span class="hero-subtitle text-center">Sizzling & Juicy!</span></div>
-                                        <h1 class="hero-title2">Satisfy </h1>
-                                        <h2 class="hero-title3">Your Hunger</h2>
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Wok-Tossed Perfection</span></div>
+                                        <h1 class="hero-title2">Savor Best</h1>
+                                        <h2 class="hero-title3">Chinese Flavors!</h2>
                                         <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
                                     </div>
                                 </div>
@@ -105,10 +105,48 @@
                             <div class="hero-img"><img src="assets/img/hero/hero_3_2.png" alt="Hero Image"></div>
                         </div>
                     </div>
+
+                    <div class="carousel-item">
+                        <div class="th-hero-wrapper hero-2">
+                            <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
+                            <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
+                            <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
+                            <div class="hero-inner">
+                                <div class="container th-container">
+                                    <div class="hero-style2">
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Authentic South Indian Feast</span></div>
+                                        <h1 class="hero-title2">Taste &</h1>
+                                        <h2 class="hero-title3">Tradition</h2>
+                                        <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-img"><img src="assets/img/hero/hero_4_1.png" alt="Hero Image"></div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="th-hero-wrapper hero-2">
+                            <div class="hero-shape1"><img src="assets/img/hero/hero_shape_2_1.png" alt="shape"></div>
+                            <div class="hero-shape2"><img src="assets/img/hero/hero_shape_2_2.png" alt="shape"></div>
+                            <div class="hero-shape3"><img src="assets/img/hero/hero_shape_2_3.png" alt="shape"></div>
+                            <div class="hero-inner">
+                                <div class="container th-container">
+                                    <div class="hero-style2">
+                                        <div class="title-ani"><span class="hero-subtitle text-center">Biryani & Chilled Sip, Perfect Together!</span></div>
+                                        <h1 class="hero-title2">The</h1>
+                                        <h2 class="hero-title3">Ultimate Duo</h2>
+                                        <div class="title-ani2"><a href="#" class="th-btn style3">Order Now</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hero-img"><img src="assets/img/hero/hero_5_1.png" alt="Hero Image"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <section class="space">
+            <section class="space" id="menu-section">
                 <div class="container">
                     <div class="title-area text-center"><span class="sub-title2">Our Menu</span>
                         <h2 class="sec-title">Our Delicious Foods</h2>
