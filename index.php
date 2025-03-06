@@ -23,7 +23,7 @@
                     <p class="woocommerce-mini-cart__total total text-end"><strong>Subtotal:</strong> <span
                             class="woocommerce-Price-amount amount"><span
                                 class="woocommerce-Price-currencySymbol">₹</span><span id="sideSubTotal"></span></span></p>
-                    <p class="woocommerce-mini-cart__buttons buttons text-end"><a href="index.php                                                                   " class="th-btn wc-forward">View
+                    <p class="woocommerce-mini-cart__buttons buttons text-end"><a href="index.php" class="th-btn wc-forward">View
                             cart</a></p>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                         <span class="quantity">${quantity} × <span class="woocommerce-Price-amount amount">
                             <span class="woocommerce-Price-currencySymbol">₹</span>${price.toFixed(2)}
                         </span></span>
-                        <span class="text-end"><b>Total: ₹${total.toFixed(2)}</b></span>
+                        <b class="text-end ms-4">Total: ₹${total.toFixed(2)}</b>
                     </li>`;
 
                 sideCartMenu.append(sideCartItem);
