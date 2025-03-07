@@ -207,9 +207,12 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="wc-proceed-to-checkout mb-30 text-end">
-                                <a href="#" class="th-btn">Proceed to checkout</a>
-                            </div>
+                            <!-- Proceed to Checkout Button -->
+<div class="wc-proceed-to-checkout mb-30 text-end">
+    <button id="checkout-button" class="th-btn">Proceed to Checkout</button>
+</div>
+
+
                         </div>
                     </div>
                 </div>
@@ -222,9 +225,41 @@
                 style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
             </path>
         </svg></div>
+
+        
+<!-- User Details Popup Modal -->
+<div id="userDetailsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Your Details</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userDetailsForm">
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" id="userEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPhone">Phone</label>
+                        <input type="tel" id="userPhone" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Proceed to Pay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="assets/js/vendor/jquery-3.7.1.min.js"></script>
     <script src="assets/js/app.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 
     <script>
     $(document).ready(function () {
@@ -247,6 +282,7 @@
                                         </div>
                                         <div class="product-content mt-n5">
                                             <button class="th-btn wc-forward add-to-cart" 
+                                              data-id="${item.id}" 
                                                 data-name="${item.food_name}" 
                                                 data-price="${item.price}" 
                                                 data-image="food_admin/zenvic/${item.food_image}">
@@ -280,7 +316,8 @@
     
 
     $(document).ready(function () {
-        $(document).on("click", ".add-to-cart", function () { 
+        $(document).on("click", ".add-to-cart", function () {
+            let id = $(this).data("id"); 
             let productName = $(this).data("name");
             let productPrice = parseFloat($(this).data("price"));
             let productImage = $(this).data("image");
@@ -299,7 +336,7 @@
 
             // Create a new row for the cart
             let newRow = `
-                <tr class="cart_item" data-name="${productName}">
+                <tr class="cart_item" data-id="${id}" data-name="${productName}">
                     <td data-title="Product"><a class="cart-productimage" href="#"><img width="91" height="91" src="${productImage}" alt="Image"></a></td>
                     <td data-title="Name"><a class="cart-productname" href="#">${productName}</a></td>
                     <td data-title="Price"><span class="amount"><bdi><span>₹</span>${productPrice.toFixed(2)}</bdi></span></td>
@@ -416,6 +453,120 @@
     });
 
     </script>
+ <script>
+    $(document).ready(function () {
+        let cartItems = [];
+
+        // Show user details modal on checkout button click
+        $("#checkout-button").click(function () {
+            $("#userDetailsModal").modal("show");
+        });
+
+        // Handle form submission to get user details
+        $("#userDetailsForm").submit(function (event) {
+            event.preventDefault();
+
+            let name = $("#userName").val();
+            let email = $("#userEmail").val();
+            let phone = $("#userPhone").val();
+
+            if (!name || !email || !phone) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Missing Details",
+                    text: "Please enter all details before proceeding!",
+                });
+                return;
+            }
+
+            cartItems = [];
+            $(".cart_item").each(function () {
+                let productName = $(this).data("name");
+                let quantity = $(this).find(".qty-input").val();
+                let price = parseFloat($(this).find(".amount bdi").first().text().replace(/[₹,]/g, ""));
+                let productId = $(this).attr("data-id");
+
+                cartItems.push({ id: productId, name: productName, quantity: quantity, price: price });
+            });
+
+            let totalAmount = parseFloat($("#order-total").text().replace(/[₹,]/g, ""));
+
+            // Send data to create order
+            $.ajax({
+                url: "create_order.php",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ user_name: name, user_email: email, user_phone: phone, cart: cartItems }),
+                dataType: "json",
+                success: function (response) {
+                    if (response.order_id) {
+                        $("#userDetailsModal").modal("hide");
+                        processPayment(response.order_id, response.amount, response.currency, name, email, phone);
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Order Failed",
+                            text: "Order creation failed. Please try again!",
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Error processing order. Please try again later.",
+                    });
+                }
+            });
+        });
+
+        function processPayment(order_id, amount, currency, name, email, phone) {
+            var options = {
+                "key": "rzp_test_g0Q9C1u01IFEEX", // Replace with your actual Razorpay key
+                "amount": amount * 100,  // Amount should be in the smallest unit (paise, for INR)
+                "currency": currency,
+                "name": "Your Food Shop",
+                "description": "Order Payment",
+                "order_id": order_id,
+                "prefill": { "name": name, "email": email, "contact": phone },
+                "handler": function (response) {
+                    // If payment is successful, show success message
+                    Swal.fire({
+                        icon: "success",
+                        title: "Payment Successful!",
+                        text: "Payment ID: " + response.razorpay_payment_id,
+                        allowOutsideClick: false,
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        window.location.href = "order_success.php?order_id=" + order_id + "&payment_status=success&payment_id=" + response.razorpay_payment_id;
+                    });
+                },
+                "theme": { "color": "#3399cc" },
+                "modal": {
+                    "escape": false,
+                    "backdropclose": false
+                },
+                "error": function (response) {
+                    // In case of error, show failure message
+                    Swal.fire({
+                        icon: "error",
+                        title: "Payment Failed!",
+                        text: "Error: " + response.error.description,
+                        allowOutsideClick: false,
+                        confirmButtonText: "Retry",
+                    }).then(() => {
+                        window.location.href = "order_success.php?order_id=" + order_id + "&payment_status=failed&error_description=" + encodeURIComponent(response.error.description);
+                    });
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    });
+</script>
+
+    
 </body>
 
 </html>

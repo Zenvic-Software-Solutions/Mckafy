@@ -1,13 +1,16 @@
 <?php
-require 'food_admin/db/dbConnection.php'; 
-require 'vendor/autoload.php'; 
+require 'food_admin/db/dbConnection.php';
+require 'vendor/autoload.php';
+require 'send_mail.php';
 use Razorpay\Api\Api;
-
+$order_id='';
 $api = new Api("rzp_test_g0Q9C1u01IFEEX", "QpKr2VMFDbFPbVZhhLtFhyqQ");
 
 $data = json_decode(file_get_contents("php://input"), true);
-$user_id = $data['user_id'];
-$cartItems = $data['cart']; // Array of food items
+$user_name = $data['user_name'];
+$user_email = $data['user_email'];
+$user_phone = $data['user_phone'];
+$cartItems = $data['cart'];
 
 $totalAmount = 0;
 foreach ($cartItems as $item) {
@@ -16,22 +19,23 @@ foreach ($cartItems as $item) {
 
 $order = $api->order->create([
     'receipt' => uniqid(),
-    'amount' => $totalAmount * 100, // Convert to paise
+    'amount' => $totalAmount * 100,
     'currency' => 'INR',
     'payment_capture' => 1
 ]);
 
-$order_id = $order['id'];
 
-// Insert Order into Database
-mysqli_query($conn, "INSERT INTO food_orders (order_id, total_amount) VALUES ('$order_id', '$totalAmount')");
 
-// Insert Ordered Items
+$order_id = $order->id;
+
+// Insert order into database
+$orderQuery = "INSERT INTO food_orders (order_id, user_name, user_email, user_phone, total_amount) VALUES ('$order_id', '$user_name', '$user_email', '$user_phone', '$totalAmount')";
+if (!mysqli_query($conn, $orderQuery)) {
+    die(json_encode(["error" => "SQL Error: " . mysqli_error($conn)]));
+}
+
+// Insert order items
 foreach ($cartItems as $item) {
-    if (!isset($item['id'], $item['quantity'], $item['price'])) {
-        die(json_encode(["error" => "Missing fields in cart data"]));
-    }
-
     $food_id = mysqli_real_escape_string($conn, $item['id']);
     $quantity = (int) $item['quantity'];
     $price = (float) $item['price'];
@@ -40,10 +44,19 @@ foreach ($cartItems as $item) {
     $query = "INSERT INTO food_order_items (order_id, food_id, quantity, price, subtotal) 
               VALUES ('$order_id', '$food_id', '$quantity', '$price', '$subtotal')";
     
-    if (!mysqli_query($conn, $query)) {
+   
+    if (!mysqli_query($conn, $query)) { // Remove 'mysql:' from here
         die(json_encode(["error" => "SQL Error: " . mysqli_error($conn)]));
     }
+    
+    // Get the last inserted ID
+    $last_inserted_id = mysqli_insert_id($conn);
+    
 }
 
+ // Call the sendRegistrationMail function
+ $sendMail = sendRegistrationMail($user_email, $user_name, $user_phone,$last_inserted_id, $order_id);
+
 echo json_encode(["order_id" => $order_id, "amount" => $totalAmount * 100, "currency" => "INR"]);
+exit;
 ?>
