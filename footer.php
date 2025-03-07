@@ -1,7 +1,7 @@
 <footer class="footer-wrapper footer-layout1" data-bg-src="assets/img/bg/footer_bg_1.jpg">
                 <div class="bg-title text-center">
-                    <div class="footer-logo1"><a href="index.php"><img src="assets/img/logo-footer.svg"
-                                alt="Restar"></a></div>
+                    <div class="footer-logo1"><a href="index.php"><img src="assets/img/logo.png" width="179" height="45" 
+                                alt="Merzcafe"></a></div>
                 </div>
                 <div class="widget-area">
                     <div class="container">
@@ -14,7 +14,7 @@
                                             <h4 class="box-title">Address Location</h4>
                                             <div class="box-content">
                                                 <div class="box-icon"><i class="fas fa-location-dot"></i></div>
-                                                <p class="box-text">138 MacArthur Ave, USA</p>
+                                                <p class="box-text">Perungalathur, Chennai 600063</p>
                                             </div>
                                         </div>
                                         <div class="info-box">

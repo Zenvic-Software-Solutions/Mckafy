@@ -6,8 +6,7 @@
                         <div class="header-links">
                             <ul>
                                 <li class="d-none d-xxl-inline-block"><i class="fas fa-location-dot"></i> <a
-                                        href="https://www.google.com/maps/">9402 Main St, Plymouth, CA 95669, United
-                                        States</a></li>
+                                        href="https://maps.app.goo.gl/6yDLQKGnvYEebid86" target="_blank">No 21, Kurinji Nagar Cross, KK Nagar, New Perungalathur, Chennai 600063</a></li>
                                 <li><i class="fas fa-phone"></i> <a href="tel:+91 98405 86859">+91 98405 86859</a></li>
                                 <li><i class="fas fa-envelope"></i> <a href="mailto:merzcafe.foods@gmail.com">merzcafe.foods@gmail.com</a>
                                 </li>
@@ -30,8 +29,8 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
-                            <div class="header-logo"><a href="index.php"><img src="assets/img/logo.svg"
-                                        alt="Restar"></a></div>
+                            <div class="header-logo"><a href="index.php"><img src="assets/img/logo2.png"
+                                        alt="Merzcafe" width="179" height="45"></a></div>
                         </div>
                         <div class="col-auto">
                             <nav class="main-menu d-none d-lg-inline-block">

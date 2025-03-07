@@ -54,7 +54,7 @@
                                         <div class="box-icon"><i class="fal fa-location-dot"></i></div>
                                         <div class="media-body">
                                             <h3 class="box-title text-ani">Location</h3>
-                                            <p class="box-text text-ani">Riverside 25, San Francisco, California</p>
+                                            <p class="box-text text-ani">No 21, Kurinji Nagar Cross, KK Nagar, New Perungalathur, Chennai 600063</p>
                                         </div>
                                     </div>
                                     <div class="contact-feature">
