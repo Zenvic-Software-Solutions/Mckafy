@@ -193,11 +193,11 @@
                                         <td data-title="Cart Subtotal" class="text-end"><span
                                                 class="amount"><bdi><span>₹</span><span id="cart-subtotal">0</span></bdi></span></td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>GST (12%)</td>
                                         <td data-title="Cart Subtotal" class="text-end"><span
                                                 class="amount"><bdi><span>₹</span><span id="cart-gst">0</span></bdi></span></td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                                 <tfoot>
                                     <tr class="order-total">
@@ -233,7 +233,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Enter Your Details</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="userDetailsForm">
@@ -418,7 +417,7 @@
             // Calculate GST (12%)
             let gstAmount = subtotal * 0.12;
             // Calculate Order Total
-            let orderTotal = subtotal + gstAmount;
+            let orderTotal = subtotal;
             // Update the values in the cart summary using IDs
             $("#cart-subtotal").text(subtotal.toFixed(2));
             $("#sideSubTotal").text(subtotal.toFixed(2));

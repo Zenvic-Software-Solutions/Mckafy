@@ -6,7 +6,7 @@
                         <div class="header-links">
                             <ul>
                                 <li class="d-none d-xxl-inline-block"><i class="fas fa-location-dot"></i> <a
-                                        href="https://maps.app.goo.gl/6yDLQKGnvYEebid86" target="_blank">No 21, Kurinji Nagar Cross, KK Nagar, New Perungalathur, Chennai 600063</a></li>
+                                        href="https://maps.app.goo.gl/6yDLQKGnvYEebid86" target="_blank">No 21, Kurinji Nagar Cross, KK Nagar, Perungalathur, Chennai-63</a></li>
                                 <li><i class="fas fa-phone"></i> <a href="tel:+91 98405 86859">+91 98405 86859</a></li>
                                 <li><i class="fas fa-envelope"></i> <a href="mailto:merzcafe.foods@gmail.com">merzcafe.foods@gmail.com</a>
                                 </li>
