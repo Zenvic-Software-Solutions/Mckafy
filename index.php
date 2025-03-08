@@ -6,7 +6,7 @@
 
 <body>
     <div class="has-smooth" id="has_smooth"></div>
-    <div class="preloader"><button class="th-btn preloaderCls">Cancel Preloader</button>
+    <div class="preloader"><button class="th-btn preloaderCls"></button>
         <div class="preloader-inner">
             <div class="loader"><span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
             </div>
@@ -245,7 +245,7 @@
                         <label for="userEmail">Email</label>
                         <input type="email" id="userEmail" class="form-control" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pb-2">
                         <label for="userPhone">Phone</label>
                         <input type="tel" id="userPhone" class="form-control" required>
                     </div>
@@ -259,6 +259,7 @@
     <script src="assets/js/app.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <script>
@@ -491,6 +492,11 @@
 
             let totalAmount = parseFloat($("#order-total").text().replace(/[₹,]/g, ""));
 
+            // Change the button text to "Processing..." and disable it
+    let submitButton = $("button[type='submit']");
+    submitButton.prop("disabled", true); // Disable button
+    submitButton.text("Processing...");   // Change button text
+
             // Send data to create order
             $.ajax({
                 url: "create_order.php",
@@ -509,6 +515,11 @@
                             text: "Order creation failed. Please try again!",
                         });
                     }
+
+
+        // After the AJAX request is complete, reset the button text and enable it again
+        submitButton.text("Proceed to Pay");  // Restore original text
+        submitButton.prop("disabled", false);  // Enable the button
                 },
                 error: function () {
                     Swal.fire({
@@ -516,6 +527,10 @@
                         title: "Error",
                         text: "Error processing order. Please try again later.",
                     });
+
+                    // In case of error, reset the button text and enable it again
+        submitButton.text("Proceed to Pay");  // Restore original text
+        submitButton.prop("disabled", false);  // Enable the button
                 }
             });
         });
@@ -525,7 +540,7 @@
                 "key": "rzp_test_g0Q9C1u01IFEEX", // Replace with your actual Razorpay key
                 "amount": amount * 100,  // Amount should be in the smallest unit (paise, for INR)
                 "currency": currency,
-                "name": "Your Food Shop",
+                "name": "MERZ CAFY",
                 "description": "Order Payment",
                 "order_id": order_id,
                 "prefill": { "name": name, "email": email, "contact": phone },

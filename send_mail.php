@@ -4,90 +4,94 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php'; // Include PHPMailer
 require 'food_admin/fpdf/fpdf.php'; // Include FPDF
 
-function generatePDF($toName, $toEmail, $toPhone, $userID, $type) {
-    class IDCardPDF extends FPDF {
+function generatePDF($toEmail, $toName, $toPhone, $userID, $order_id, $products, $gstRate) {
+
+    class BillPDF extends FPDF {
+        private $order_id; // Declare a property to store order ID
+
+        function __construct($order_id) {
+            parent::__construct();
+            $this->order_id = $order_id; // Store order ID in the class
+        }
         function Header() {
-            // Card Background
-           
+            // Add Logo
+            $this->Image('assets/img/logo2.png', 10, 6, 30); // Adjust path and size
+        
+            // Move to the right
+            $this->SetY(10);
+            $this->SetFont('Arial', 'B', 14);
+            $this->Cell(0, 10, 'MERZ CAFE BILL', 0, 1, 'C');
+        
+            $this->SetFont('Arial', '', 10);
+            $this->Cell(0, 6, "Order ID: " . $this->order_id, 0, 1, 'C'); // Ensure order_id is set correctly
+            $this->Cell(0, 6, "Date: " . date("d-m-Y H:i"), 0, 1, 'C');
+            $this->Ln(5);
         }
         function Footer() {
-            $this->SetY(-15); // Position at 15mm from bottom
-            $this->SetFont('Arial', 'B', 4);
-            $this->SetTextColor(0, 0, 0);
-    
-            // Footer Content (Contact Info)
-            $this->Cell(0, 3, 'Contact: +91 98765 43210', 0, 1, 'C'); // Contact Number
-            $this->Cell(0, 3, 'Email: support@example.com', 0, 1, 'C'); // Email
-            $this->Cell(0, 3, 'Website: www.example.com', 0, 1, 'C'); // Website URL
+            $this->SetY(-20);
+            $this->SetFont('Arial', 'I', 10);
+            $this->Cell(0, 5, 'Thank you for your purchase!', 0, 1, 'C');
+            $this->Cell(0, 5, 'Contact: +91 98765 43210 | Email: support@example.com', 0, 1, 'C');
         }
     }
-    
-    
-    $pdf = new IDCardPDF('P', 'mm', [50, 85]); // Custom ID card size
-    $pdf->AddPage();
-    
-    // Card Border (Simulating ID Card Look)
-    $pdf->SetDrawColor(0, 0, 0);
-    $pdf->Rect(2, 2, 46, 81);
-    
-    // **1. Header: ID Card Title**
-    $pdf->SetFont('Arial', 'B', 8);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetY(4); 
-    $pdf->Cell(30, 4, 'EXPO ID CARD', 0, 1, 'C');
-    $pdf->Ln(2);
-    
-    // **2. Profile Image**
-    $pdf->Image('assets/img/logo2.png', 10, 12, 30, 28, 'PNG'); // Slightly smaller
-    $pdf->Ln(34); // Adjusted space after image
-    
-    // **3. Student Details**
-    $pdf->SetX(6);
-    $pdf->SetFont('Arial', 'B', 6.5);
-    $pdf->Cell(10, 4, 'Name:', 0);
-    $pdf->SetFont('Arial', '', 6.5);
-    $pdf->Cell(38, 4, $toName, 0, 1);
-    
-    $pdf->SetX(6);
-    $pdf->SetFont('Arial', 'B', 6.5);
-    $pdf->Cell(10, 4, 'Phone:', 0);
-    $pdf->SetFont('Arial', '', 6.5);
-    $pdf->Cell(38, 4, $toPhone, 0, 1);
-    
-    $pdf->SetX(6);
-    $pdf->SetFont('Arial', 'B', 6.5);
-    $pdf->Cell(10, 4, 'Email:', 0);
-    $pdf->SetFont('Arial', '', 6.5);
-     // **Manually Break Email if it's Too Long**
-     if (strlen($toEmail) > 25) {
-        $emailParts = str_split($toEmail, 25);
-        foreach ($emailParts as $index => $part) {
-            if ($index == 0) {
-                $pdf->Cell(34, 4, $part, 0, 1); // First line
-            } else {
-                $pdf->Cell(10, 4, '', 0); // Indentation for continuation
-                $pdf->Cell(34, 4, $part, 0, 1);
-            }
-        }
-    } else {
-        $pdf->Cell(38, 4, $toEmail, 0, 1);
-    }
-    
-    $pdf->SetX(6);
-    $pdf->SetFont('Arial', 'B', 6.5);
-    $pdf->Cell(10, 4, 'Order Id:', 0);
-    $pdf->SetFont('Arial', '', 6.5);
-    $pdf->Cell(38, 4, $type); // Ensures college stays within one page
-    
-    // **Save and Output PDF**
-    $filePath = "pdfs/user_{$userID}.pdf"; 
-    $pdf->Output($filePath, 'F'); 
 
+    // Create PDF object with order ID
+    $pdf = new BillPDF($order_id);
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', '', 10);
+    
+    // Customer Details
+    $pdf->Cell(0, 8, "Name: $toName", 0, 1);
+    $pdf->Cell(0, 8, "Phone: $toPhone", 0, 1);
+    $pdf->Cell(0, 8, "Email: $toEmail", 0, 1);
+    $pdf->Ln(5);
+
+    // Table Header
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->Cell(90, 7, "Item", 1);
+    $pdf->Cell(20, 7, "Qty", 1, 0, 'C');
+    $pdf->Cell(30, 7, "Price", 1, 0, 'C');
+    $pdf->Cell(40, 7, "Total", 1, 1, 'C');
+
+    $pdf->SetFont('Arial', '', 10);
+    $subtotal = 0;
+    
+    foreach ($products as $product) {
+        $item = substr($product['name'], 0, 30);
+        $qty = $product['quantity'];
+        $price = number_format($product['price'], 2);
+        $total = number_format($qty * $product['price'], 2);
+        $subtotal += $qty * $product['price'];
+        
+        $pdf->Cell(90, 7, $item, 1);
+        $pdf->Cell(20, 7, $qty, 1, 0, 'C');
+        $pdf->Cell(30, 7, $price, 1, 0, 'C');
+        $pdf->Cell(40, 7, $total, 1, 1, 'C');
+    }
+
+    // GST Calculation
+    $gstAmount = ($subtotal * $gstRate) / 100;
+    $grandTotal = $subtotal + $gstAmount;
+
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->Cell(140, 7, "Subtotal", 1, 0, 'R');
+    $pdf->Cell(40, 7, number_format($subtotal, 2), 1, 1, 'C');
+
+    $pdf->Cell(140, 7, "GST ($gstRate%)", 1, 0, 'R');
+    $pdf->Cell(40, 7, number_format($gstAmount, 2), 1, 1, 'C');
+
+    $pdf->Cell(140, 7, "Grand Total", 1, 0, 'R');
+    $pdf->Cell(40, 7, number_format($grandTotal, 2), 1, 1, 'C');
+    
+    // Save and Output PDF
+    $filePath = "pdfs/user_{$userID}_bill.pdf";
+    $pdf->Output($filePath, 'F');
     return $filePath;
 }
 
-function sendRegistrationMail($toEmail, $toName, $toPhone, $userID, $type) {
-    $pdfFile = generatePDF($toName, $toEmail,$toPhone, $userID, $type); // Create PDF
+
+function sendRegistrationMail($toEmail, $toName, $toPhone, $userID, $order_id, $products, $gstRate) {
+    $pdfFile = generatePDF($toEmail, $toName, $toPhone, $userID, $order_id, $products, $gstRate); // Create PDF
     
     $mail = new PHPMailer(true);
 
@@ -102,7 +106,7 @@ function sendRegistrationMail($toEmail, $toName, $toPhone, $userID, $type) {
         $mail->Port       = 587;
 
         // Sender & Recipient
-        $mail->setFrom('webdevvasanth@gmail.com', 'https://zenvicsoft.com/');
+        $mail->setFrom('webdevvasanth@gmail.com', 'https://merzcafe.com/');
         $mail->addAddress($toEmail, $toName);
 
         // Attach PDF
@@ -110,20 +114,29 @@ function sendRegistrationMail($toEmail, $toName, $toPhone, $userID, $type) {
 
         // Email Content
         $mail->isHTML(true);
-        $mail->Subject = 'Registration Successful - Your ID Card';
+        $mail->Subject = 'Order Confirmation - Your Invoice Attached';
         $mail->Body = "
-        <h3>Dear $toName,</h3>
-        <p>Your registration was successful!</p>
-        <p>Find your attached ID Card.</p>
-        <br>
-        <p>Regards,</p>
-        <p><strong>Your Website Team</strong></p>
-        <hr>
-        <p>📞 Contact: +91 98765 43210</p>
-        <p>📧 Email: support@example.com</p>
-        <p>🌐 Website: <a href='https://www.example.com' target='_blank'>www.example.com</a></p>
-    ";
-
+            <h3>Dear $toName,</h3>
+            <p>Thank you for your order! Your purchase has been successfully processed.</p>
+            <p>Please find your invoice attached for your reference.</p>
+            <br>
+            <p><strong>Order Details:</strong></p>
+            <ul>
+                <li><strong>Order ID:</strong> $order_id</li>
+                <li><strong>Contact:</strong> $toPhone</li>
+                <li><strong>Email:</strong> $toEmail</li>
+            </ul>
+            <br>
+            <p>If you have any questions or need further assistance, feel free to reach out to us.</p>
+            <br>
+            <p>Best regards,</p>
+            <p><strong>Merz Cafe Team</strong></p>
+            <hr>
+            <p>📞 Contact: +91 98765 43210</p>
+            <p>📧 Email: support@example.com</p>
+            <p>🌐 Website: <a href='https://www.example.com' target='_blank'>www.example.com</a></p>
+        ";
+        
         $mail->send();
         return "Success: Email with PDF has been sent!";
     } catch (Exception $e) {

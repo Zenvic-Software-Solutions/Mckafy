@@ -55,8 +55,16 @@ foreach ($cartItems as $item) {
 }
 
  // Call the sendRegistrationMail function
- $sendMail = sendRegistrationMail($user_email, $user_name, $user_phone,$last_inserted_id, $order_id);
+//  $sendMail = sendRegistrationMail($user_email, $user_name, $user_phone,$last_inserted_id, $order_id ,$cartItems);
+ $sendMail = sendRegistrationMail($user_email, $user_name, $user_phone, $last_inserted_id, $order_id, $cartItems, 12);
+
+
+
+
+
 
 echo json_encode(["order_id" => $order_id, "amount" => $totalAmount * 100, "currency" => "INR"]);
 exit;
+
+
 ?>
